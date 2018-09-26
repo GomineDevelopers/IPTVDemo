@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>贵州IPTV收视推荐系统</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">贵州IPTV收视推荐系统</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> 用户资料</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="../login.html"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="快速搜索...">
+                            <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                        </div>
+                        <!-- /input-group -->
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-thumbs-up fa-fw"></i> 收视推荐<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="./show.html">节目</a>
+                            </li>
+                            <li>
+                                <a  href="./LDA.html">内容</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-table fa-fw"></i> 数据审计<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="integrity.html">完整性</a>
+                            </li>
+                            <li>
+                                <a href="exception.html">异常值</a>
+                            </li>
+                            <li>
+                                <a href=trend.html" class="active">趋势</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-database fa-fw"></i> 资料库<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="tvList.html">节目</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i> 系统管理 </a>
+                        <!-- /.nav-second-level -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">趋势</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="panel panel-default" id="table1">
+                        <div class="panel-heading">
+                            各地市每天开机用户数量
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="chart1" style="height: 70vh"></div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <div class="panel panel-default" id="table2">
+                        <div class="panel-heading">
+                            各地市每天在线用户数
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="chart2" style="height: 70vh"></div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <div class="panel panel-default" id="table3">
+                        <div class="panel-heading">
+                            各地市每天每用户心跳频次
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="chart3" style="height: 70vh"></div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <ul class="nav bs-docs-sidenav" id="right-side">
+                        <li class="">
+                            <a href="#table1">各地市每天开机用户数量
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#table2">各地市每天在线用户数
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#table3">各地市每天每用户心跳频次
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../dist/js/sb-admin-2.js"></script>
+<script src="../dist/js/echarts.common.min.js"></script>
+<script src="../dist/js/jquery.pin.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#right-side").pin();
+        $("#side-menu").pin();
+    });
+
+    var myChart1 = echarts.init(document.getElementById('chart1'));
+    var myChart2 = echarts.init(document.getElementById('chart2'));
+    var myChart3 = echarts.init(document.getElementById('chart3'));
+
+    var dataTime1 = ["2018/06/11", "2018/06/12", "2018/06/13", "2018/06/14", "2018/06/15", "2018/06/16", "2018/06/17", "2018/06/18", "2018/06/19", "2018/06/20", "2018/06/21", "2018/06/22", "2018/06/23", "2018/06/24",
+        "2018/06/25", "2018/06/26", "2018/06/27", "2018/06/28", "2018/06/29", "2018/06/30", "2018/07/01", "2018/07/02", "2018/07/03", "2018/07/04", "2018/07/05", "2018/07/06", "2018/07/07", "2018/07/08", "2018/07/09"
+        , "2018/07/10", "2018/07/11", "2018/07/12", "2018/07/13", "2018/07/14", "2018/07/15", "2018/07/16", "2018/07/17", "2018/07/18"];
+    var dataTime2 = ["2018/07/09"
+        , "2018/07/10", "2018/07/11", "2018/07/12", "2018/07/13", "2018/07/14", "2018/07/15", "2018/07/16", "2018/07/17", "2018/07/18"];
+    var nameArray = ['贵阳', '遵义', '安顺', '黔南', '黔东南', '铜仁', '毕节', '六盘水', '黔西南'];
+
+    var stringArray1 = [
+        "3697,3885,4040,4268,4598,4785,4552,4699,4589,4785,4958,5356,5514,5693,5214,5590,5447,5687,6157,6772,6860,6942,7186,7377,7535,8044,7702,7844,7647,7841,7919,7965,8303,8555,8680,8604,8613,2585",
+        "2347,2721,2791,2940,3218,3622,3685,3791,3884,3886,4112,4511,4872,5099,4809,4941,5226,5532,6024,6167,6588,6786,6971,7174,7710,8250,8102,8073,8233,8380,8402,8834,9056,9290,9503,9807,9582,3382",
+        "1177,1198,1279,1424,1591,1687,1730,1679,1817,2222,2025,2205,2277,2280,2276,2291,2386,2421,2681,2857,2857,2830,3020,3147,3240,3635,3449,3527,3372,3505,3534,3609,3713,3823,3991,4010,3920,1428",
+        "866,913,1056,1164,1407,1556,1688,1652,1601,1858,1957,2198,2282,2411,2247,2307,2412,2519,2759,2903,2949,3008,3207,3301,3394,3691,3698,3856,3758,3750,3792,3894,4126,4268,4402,4342,4499,1517",
+        "1498,1626,1752,1962,2314,2640,2836,2842,2884,3239,3447,3910,4124,4405,4167,4335,4366,4701,5041,5497,5573,5318,5374,5521,5558,6434,6373,6218,6186,6319,6464,6507,6975,6993,6934,6765,6814,2398",
+        "621,658,770,882,1007,1123,1178,1163,1201,1288,1393,1542,1664,1683,1586,1693,1706,1833,1979,2235,2381,2388,2553,2638,2870,3065,3125,3163,3182,3388,3498,3678,3814,4126,4007,4007,4250,1653",
+        "821,932,1094,1250,1503,1869,2068,1990,2299,2437,2748,2838,3113,3361,3116,3339,3555,3828,4129,4519,4666,4800,4871,5130,5456,6041,5769,5923,5826,6021,6192,6330,6456,6667,6846,6694,6812,2266",
+        "1497,1612,1670,1787,1901,2192,2250,2178,2200,2428,2472,2673,2766,2989,2853,2907,2986,3266,3487,3702,3785,3721,3680,3771,3923,4303,4309,4369,4362,4450,4469,4445,4874,4913,5006,5052,5055,1477",
+        "624,695,839,982,1217,1378,1467,1462,1524,1632,1773,2027,2093,2106,2004,2105,2316,2355,2644,2824,2904,2866,2950,3176,3233,3651,3916,3746,3657,3927,4085,4111,4451,4577,4736,4702,4837,1575"
+    ];
+    var stringArray2 = [
+        "11999,12186,12389,12552,12811,13188,13525,13603,13614,10536",
+        "12480,12784,13166,13559,13922,14403,14852,15205,15414,12466",
+        "5031,5178,5336,5418,5530,5729,5907,6018,6051,4957",
+        "5238,5323,5451,5583,5795,5992,6177,6362,6496,5150",
+        "8662,8759,8796,8920,9167,9326,9361,9472,9482,7100",
+        "4751,4904,5123,5321,5537,5770,5932,6132,6324,5098",
+        "8449,8657,8964,9175,9429,9660,9952,10114,10388,8353",
+        "6353,6530,6655,6799,7052,7202,7395,7591,7656,6149",
+        "5429,5643,5883,6051,6332,6565,6784,6970,7204,5849"
+
+    ];
+    var stringArray3 = [
+        "94.02841904,94.43041195,94.82048592,94.6650733,94.43728046,94.8858811,93.71652495,93.08137911,94.08586749,44.68754746",
+        "96.06338141,97.22997497,97.38014583,97.26211373,96.88105157,97.71665625,97.6961352,97.7775074,99.83495524,45.41857853",
+        "96.79864838,96.1599073,95.33770615,94.78608343,96.26672694,95.74358527,96.34213645,95.93452974,98.57296315,44.50474077",
+        "90.52119129,93.96280293,93.67638965,92.83109439,91.56013805,91.02686916,91.78387567,92.813895,93.17179803,43.87398058",
+        "84.9123759,85.72953534,85.01728058,85.16726457,83.61743209,83.36993352,83.4563615,85.50496199,84.89295507,39.94901409",
+        "97.75626184,98.05668842,97.53679485,97.17722233,96.44645115,96.82114385,98.37019555,99.31930855,99.28257432,44.92448019",
+        "94.06225589,93.57179161,94.98672468,95.0106812,93.91006469,94.16821946,94.46372588,95.90607079,96.88765884,44.99509158",
+        "96.31638596,96.17488515,97.06942149,96.7524636,93.43150879,96.04734796,97.06193374,97.46094059,98.64720481,46.18604651",
+        "96.45330632,95.79035974,95.1227265,96.30094199,94.7087808,95.90388424,95.5337559,96.43357245,97.3289839,45.27577364"
+
+    ];
+
+    function setOption(sArray, sChart, sData) {
+        var seriesData = [];
+        for (var i = 0; i < 9; i++) {
+            var tmpData = {};
+            tmpData.type = "line";
+            tmpData.data = sArray[i].split(",");
+            tmpData.name = nameArray[i];
+            if (sChart == myChart3) {
+                for (var j = 0; j < tmpData.data.length; j++) {
+                    tmpData.data[j] = parseFloat(tmpData.data[j]).toFixed(2);
+                }
+            }
+            seriesData[i] = tmpData;
+        }
+
+        // 指定图表的配置项和数据
+        var option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: nameArray
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: sData,
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: seriesData
+        };
+        if (sChart == myChart3) {
+            option.yAxis.min = 30;
+            option.yAxis.max = 110;
+        }
+        if (sData.length > 10) {
+            option.dataZoom = [
+                {
+                    show: true,
+                    start: 0,
+                    end: 100
+                },
+                {
+                    type: 'inside',
+                    start: 0,
+                    end: 100
+                }
+            ]
+        }
+        // 使用刚指定的配置项和数据显示图表。
+        sChart.setOption(option);
+    }
+
+    setOption(stringArray1, myChart1, dataTime1);
+    setOption(stringArray2, myChart2, dataTime2);
+    setOption(stringArray3, myChart3, dataTime2);
+</script>
+
+</body>
+
+</html>

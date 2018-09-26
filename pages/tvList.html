@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>贵州IPTV收视推荐系统</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        .active-btn {
+            color: #4f9fcf;
+            cursor: pointer
+        }
+
+        .form-inline {
+            padding: 8px;
+        }
+
+        .form-group {
+            padding: 8px 0;
+        }
+
+        .mr {
+            margin-right: 20px;
+        }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">贵州IPTV收视推荐系统</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw "></i> 用户资料</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="快速搜索...">
+                            <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                        </div>
+                        <!-- /input-group -->
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-thumbs-up fa-fw"></i> 收视推荐<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="./show.html">节目</a>
+                            </li>
+                            <li>
+                                <a href="./LDA.html">内容</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-table fa-fw"></i> 数据审计<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="integrity.html">完整性</a>
+                            </li>
+                            <li>
+                                <a href="exception.html">异常值</a>
+                            </li>
+                            <li>
+                                <a href="trend.html">趋势</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-database fa-fw"></i> 资料库<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="tvList.html" class="active">节目</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i> 系统管理 </a>
+                        <!-- /.nav-second-level -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">节目</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row" id="table1">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    IPTV节目资料
+                                </div>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    <div class="row" v-if="!isLoading">
+                                        <div class="col-md-12">
+                                            <div class="form-inline">
+                                                <div class="form-group mr">
+                                                    <label for="example1">数据总数：</label>
+                                                    <span v-text="maxNum"></span><span class="mr">个</span>
+
+                                                    <label for="example1">总页数：</label>
+                                                    <span v-text="maxPageIndex"></span> <span class="mr">页</span>
+
+                                                    <label for="example1">当前页数：</label>
+                                                    <input type="number" class="form-control" id="example1"
+                                                           v-model="pageIndex" min="1" :max="maxPageIndex"
+                                                           style="width: 80px">
+                                                    <i class="fa fa-plus fa-fw "
+                                                       :class="{'active-btn':pageIndex< maxPageIndex}"
+                                                       @click="plusPageIndex"></i>
+                                                    <i class="fa fa-minus fa-fw"
+                                                       :class="{'active-btn':pageIndex> 1}"
+                                                       @click="minusPageIndex"></i>
+                                                </div>
+
+                                                <div class="form-group mr">
+                                                    <label for="example2">每页显示:</label>
+                                                    <select class="form-control" id="example2" v-model="pageSize">
+                                                        <option>10</option>
+                                                        <option>50</option>
+                                                        <option>100</option>
+                                                    </select>
+                                                    <span>个</span>
+                                                </div>
+
+                                                <div class="form-group mr">
+                                                    <label for="example3">排序规则:</label>
+                                                    <select class="form-control" id="example3" v-model="sortBy.value">
+                                                        <option v-for="option in sortByOptions"
+                                                                :value="option.value">
+                                                            {{ option.text }}
+                                                        </option>
+                                                    </select>
+
+                                                    <select class="form-control" id="example4" v-model="sortOrder">
+                                                        <option>降序</option>
+                                                        <option>升序</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group mr">
+                                                    <label for="example5">搜索:</label>
+
+                                                    <select class="form-control" id="example5"
+                                                            v-model="searchField.value">
+                                                        <option v-for="option in searchOptions"
+                                                                :value="option.value">
+                                                            {{ option.text }}
+                                                        </option>
+                                                    </select>
+                                                    <input type="text" class="form-control" v-model="searchText"
+                                                           placeholder="请输入...">
+
+                                                </div>
+                                            </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive" v-if="!isLoading">
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th class="col-md-1">节目名称</th>
+                                                <th class="col-md-1">上映时间</th>
+                                                <th class="col-md-1">导演</th>
+                                                <th class="col-md-2">编剧</th>
+                                                <th class="col-md-2">制片</th>
+                                                <th class="col-md-1">类型</th>
+                                                <th class="col-md-1">国家/地区</th>
+                                                <th class="col-md-1">语言</th>
+                                                <th class="col-md-1">简介</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr v-show="tvData.length==0" class="text-center">
+                                                <td colspan="9"> 暂无结果，请尝试更换关键词。</td>
+                                            </tr>
+                                            <tr v-for="tvItem in tvData">
+                                                <td>
+                                                    <span v-text="tvItem.name"></span>
+                                                </td>
+                                                <td>
+                                                    <span v-text="tvItem.time|| '暂无'"></span>
+                                                </td>
+                                                <td>
+                                                    <span v-text="tvItem.dir|| '暂无'"></span>
+                                                </td>
+                                                <td>
+                                                    <span v-text="tvItem.editer || '暂无'"></span>
+                                                </td>
+                                                <td>
+                                                    <span v-text="tvItem.pro|| '暂无'"></span>
+                                                </td>
+                                                <td>
+                                                    <span v-text="tvItem.type|| '暂无'"></span>
+                                                </td>
+                                                <td>
+                                                    <span v-text="tvItem.country|| '暂无'"></span>
+                                                </td>
+                                                <td>
+                                                    <span v-text="tvItem.lang|| '暂无'"></span>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-info btn-detail"
+                                                            data-original-title data-container="body"
+                                                            data-toggle="popover" data-placement="left"
+                                                            :data-content="tvItem.intro"
+                                                            v-if="tvItem.intro">
+                                                        详情
+                                                    </button>
+                                                    <span v-else>暂无</span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div v-else class="text-center">
+                                        <i class="fa fa-spinner fa-spin fa-fw"></i> 数据加载中...
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../dist/js/jquery.pin.js"></script>
+<script src="../dist/js/sb-admin-2.js"></script>
+<script src="../dist/js/vue.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#side-menu").pin();
+    });
+
+    var app = new Vue({
+        el: '#wrapper',
+        data: {
+            sortByOptions: [
+                {text: '上映时间', value: 'time'},
+            ],
+            searchOptions: [
+                {text: '节目名称', value: 'name'},
+                {text: '上映时间', value: 'time'},
+                {text: '导演', value: 'dir'},
+                {text: '编剧', value: 'editer'},
+                {text: '制片', value: 'pro'},
+                {text: '类型', value: 'type'},
+                {text: '国家/地区', value: 'country'},
+                {text: '语言', value: 'lang'},
+                {text: '简介', value: 'intro'}
+            ],
+            consData: [],
+            tvData: [],
+            isLoading: true,
+            pageIndex: 1,
+            pageSize: 10,
+            maxNum: 1,
+            maxPageIndex: '',
+            searchField: {text: '节目名称', value: 'name'},
+            searchText: '',
+            sortBy: {text: '上映时间', value: 'time'},
+            sortOrder: "降序"
+        },
+        mounted: function () {
+            var self = this;
+            $.getJSON("../dist/TVData.json", function (data) {
+                self.consData = data;
+                self.updateData();
+            });
+        },
+        watch: {
+            tvData: {
+                handler: function (val, oldVal) {
+                    var self = this;
+                    self.$nextTick(function () {
+                        $(".btn-detail").popover();
+                        $('.btn-detail').on('show.bs.popover', function () {
+                            $('[aria-describedby]').click();
+                        })
+
+                    })
+                },
+                deep: true
+            },
+            searchField: {
+                handler: function (val, oldVal) {
+                    this.$nextTick(function () {
+                        this.updateData();
+                    })
+                },
+                deep: true
+            },
+            searchText: {
+                handler: function (val, oldVal) {
+                    this.$nextTick(function () {
+                        this.updateData();
+                    })
+                },
+                deep: true
+            },
+            pageIndex: {
+                handler: function (val, oldVal) {
+                    this.$nextTick(function () {
+                        this.updateData();
+                    })
+                },
+                deep: true
+            },
+            pageSize: {
+                handler: function (val, oldVal) {
+                    this.$nextTick(function () {
+                        this.updateData();
+                    })
+                },
+                deep: true
+            },
+            sortBy: {
+                handler: function (val, oldVal) {
+                    this.$nextTick(function () {
+                        this.updateData();
+                    })
+                },
+                deep: true
+            },
+            sortOrder: {
+                handler: function (val, oldVal) {
+                    this.$nextTick(function () {
+                        this.updateData();
+                    })
+                },
+                deep: true
+            },
+        },
+        methods: {
+            plusPageIndex: function () {
+                if (this.pageIndex < this.maxPageIndex)
+                    this.pageIndex++;
+            },
+            minusPageIndex: function () {
+                if (this.pageIndex > 1)
+                    this.pageIndex--;
+            },
+            objectArraySort: function (keyName) {
+                var self = this;
+                return function (objectN, objectM) {
+                    var valueN = objectN[keyName]
+                    var valueM = objectM[keyName]
+                    var valueNIndex = objectN['index']
+                    var valueMIndex = objectM['index']
+
+                    if (valueN == null) return 1;
+                    else if (valueM == null) return -1;
+
+                    if (self.sortOrder == '降序') {
+                        if (parseInt(valueN) < parseInt(valueM)) return 1;
+                        else if (parseInt(valueN) > parseInt(valueM)) return -1;
+                        else if (parseInt(valueN) == parseInt(valueM) && valueNIndex < valueMIndex) return 1;
+                        else if (parseInt(valueN) == parseInt(valueM) && valueNIndex > valueMIndex) return -1;
+                    }
+                    else {
+                        if (parseInt(valueN) < parseInt(valueM)) return -1;
+                        else if (parseInt(valueN) > parseInt(valueM)) return 1;
+                        else if (parseInt(valueN) == parseInt(valueM) && valueNIndex < valueMIndex) return -1;
+                        else if (parseInt(valueN) == parseInt(valueM) && valueNIndex > valueMIndex) return 1;
+                    }
+
+
+                }
+            },
+            updateData: function () {
+                var self = this;
+                self.isLoading = true;
+                self.tvData = [];
+                var filterData = self.consData;
+                if (self.searchText) {
+                    filterData = self.consData.filter(function (item, index, array) {   //返回数组，filter函数获取满足条件的项
+                        for (var i in item) {
+                            if (i == self.searchField.value) {
+                                if (item[i] && item[i].indexOf(self.searchText) != -1) {
+                                    return item;
+                                }
+                                else {
+                                    break;
+                                }
+
+                            }
+                        }
+                    });
+                }
+
+                self.maxNum = filterData.length;
+                self.maxPageIndex = Math.ceil(self.maxNum / self.pageSize);
+                filterData.sort(self.objectArraySort(self.sortBy.value));
+
+                for (var i = 0; i < self.pageSize; i++) {
+                    if (!filterData[self.pageSize * (self.pageIndex - 1) + i]) {
+                        break;
+                    }
+                    self.tvData.push(filterData[self.pageSize * (self.pageIndex - 1) + i]);
+                }
+                self.isLoading = false;
+            },
+        }
+
+    })
+
+
+</script>
+
+</body>
+
+</html>

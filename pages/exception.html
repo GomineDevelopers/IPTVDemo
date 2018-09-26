@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>贵州IPTV收视推荐系统</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">贵州IPTV收视推荐系统</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#"><i class="fa fa-user fa-fw"></i> 用户资料</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="../login.html"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="快速搜索...">
+                            <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                        </div>
+                        <!-- /input-group -->
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-thumbs-up fa-fw"></i> 收视推荐<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="./show.html">节目</a>
+                            </li>
+                            <li>
+                                <a  href="./LDA.html">内容</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-table fa-fw"></i> 数据审计<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="integrity.html">完整性</a>
+                            </li>
+                            <li>
+                                <a href="exception.html" class="active">异常值</a>
+                            </li>
+                            <li>
+                                <a href="trend.html">趋势</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-database fa-fw"></i> 资料库<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="tvList.html">节目</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i> 系统管理 </a>
+                        <!-- /.nav-second-level -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">异常值</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        各地市每天用户开机次数
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div id="main" style="height: 70vh"></div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+
+<script src="../dist/js/echarts.common.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../dist/js/sb-admin-2.js"></script>
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    var dataTime = ["2018/06/11", "2018/06/12", "2018/06/13", "2018/06/14", "2018/06/15", "2018/06/16", "2018/06/17", "2018/06/18", "2018/06/19", "2018/06/20", "2018/06/21", "2018/06/22", "2018/06/23", "2018/06/24",
+        "2018/06/25", "2018/06/26", "2018/06/27", "2018/06/28", "2018/06/29", "2018/06/30", "2018/07/01", "2018/07/02", "2018/07/03", "2018/07/04", "2018/07/05", "2018/07/06", "2018/07/07", "2018/07/08", "2018/07/09"
+        , "2018/07/10", "2018/07/11", "2018/07/12", "2018/07/13", "2018/07/14", "2018/07/15", "2018/07/16", "2018/07/17", "2018/07/18"];
+    var nameArray = ['贵阳', '遵义', '安顺', '黔南', '黔东南', '铜仁', '毕节', '六盘水', '黔西南'];
+    var stringArray = ["2.399513119\t2.828314028\t2.312376238\t2.39081537\t2.80230535\t4.282758621\t2.871265378\t3.114492445\t2.054696012\t2.142528736\t2.260790641\t2.956497386\t2.756800871\t2.834182329\t2.161296509\t2.069767442\t3.011382412\t2.209249165\t3.207731038\t3.372563497\t3.494169096\t2.354940939\t4.130949068\t2.768740681\t2.269409423\t3.653406266\t3.634510517\t5.004589495\t2.354648882\t2.177018238\t3.40712211",
+        "2.243289306\t2.451304667\t3.072733787\t3.604081633\t3.245494096\t2.364439536\t2.964993216\t2.597731469\t2.108393409\t2.114770973\t2.23516537\t2.211039681\t2.413382594\t2.330260836\t2.249948014\t2.356405586\t2.152698048\t2.265726681\t2.229747676\t2.403113345\t2.295992714\t2.356027115\t2.401233682\t3.418316142\t3.093774319\t2.831515152\t2.502591953\t2.458441719\t2.71444188\t2.643317422\t2.841466318\t2.78639348\t3.634606891\t2.82088267\t2.968010102\t2.693076374\t2.648403256\t1.587226493",
+        "2.2115548\t2.292988314\t2.519937451\t2.497893258\t2.872407291\t2.538233551\t2.490751445\t2.459797499\t2.272427078\t2.300180018\t2.214814815\t2.291609977\t2.514273166\t2.553508772\t2.346221441\t3.146224356\t2.380972339\t2.533250723\t2.941812756\t4.661183059\t5.446972349\t5.702473498\t3.751986755\t2.868763902\t2.977777778\t3.183768913\t2.821687446\t3.021264531\t3.117141163\t2.663623395\t4.391341256\t2.968135218\t2.708052788\t2.543813759\t2.545727888\t2.571072319\t3.062244898\t1.429971989",
+        "2.881062356\t3.452354874\t6.891098485\t6.633161512\t5.189054726\t3.179948586\t2.965047393\t2.928571429\t2.660836977\t2.630785791\t2.739397036\t2.946314832\t3.237510955\t3.279137287\t2.999109924\t3.03467707\t3.93159204\t3.152838428\t4.470097862\t3.174646917\t3.226178366\t3.120013298\t3.265668849\t3.892153893\t4.515026517\t2.906800325\t3.245808545\t5.004408714\t5.471527408\t3.4072\t2.97257384\t3.253466872\t3.740426563\t5.251640113\t6.320990459\t4.29064947\t3.060235608\t1.310481213",
+        "2.465287049\t2.561500615\t2.459474886\t2.412334353\t2.416162489\t3.014393939\t2.720028209\t2.606966925\t2.497919556\t2.417412782\t2.463011314\t2.712787724\t2.811590689\t3.691940976\t2.441564675\t2.481199539\t2.391891892\t2.589023612\t2.36242809\t2.93050755\t2.757401759\t3.514479128\t2.885560104\t2.680130411\t4.261424973\t2.679048803\t4.175113761\t2.815696365\t3.092305205\t3.159360658\t2.644647277\t2.531888735\t2.563584229\t3.661232661\t5.147822325\t3.195121951\t2.705899618\t1.701834862",
+        "2.264090177\t2.755319149\t2.627272727\t2.629251701\t3.463753724\t6.730186999\t2.640067912\t4.172828891\t2.45295587\t4.059006211\t13.71069634\t3.83463035\t2.623197115\t2.623885918\t2.367591425\t5.274660366\t4.167057444\t2.6933988\t2.539161193\t2.775391499\t2.538429231\t2.443048576\t2.594594595\t3.116376043\t2.706968641\t2.645676998\t2.70336\t3.733797028\t2.585166562\t2.569657615\t2.607775872\t2.629961936\t2.510487677\t2.702132816\t2.611679561\t3.159470926\t5.267764706\t1.911675741",
+        "2.845310597\t2.784334764\t3.176416819\t8.3352\t2.855622089\t2.995719636\t2.912475822\t2.709547739\t2.521096129\t2.787443578\t2.731441048\t2.579281184\t2.750401542\t2.722999107\t2.494865212\t2.878107218\t3.929395218\t2.491901776\t2.531121337\t2.686877628\t3.139948564\t2.86625\t2.565386984\t2.557699805\t2.585227273\t2.689620924\t2.650199341\t2.504980584\t2.516134569\t2.732768643\t3.107073643\t2.608846762\t2.54739777\t2.589470527\t2.496056091\t2.45981476\t2.856870229\t2.314210062",
+        "2.579158317\t2.437965261\t2.428742515\t2.682148853\t2.512361915\t2.73129562\t3.615555556\t6.080348944\t6.415909091\t4.479406919\t5.112459547\t2.496071829\t2.531814895\t2.546671128\t2.665264634\t2.435844513\t2.530475553\t3.632271892\t4.326355033\t2.6091302\t2.559577279\t4.292663263\t3.98451087\t2.872712808\t2.44430283\t2.412038113\t2.4339754\t2.423666743\t3.045621275\t2.540224719\t5.082345044\t4.049718785\t2.710709889\t2.840423367\t2.756092689\t2.402612827\t2.321266073\t1.387271496",
+        "2.810897436\t2.833093525\t2.784266985\t2.880855397\t3.12243221\t3.431059507\t2.886162236\t2.824213406\t2.591207349\t2.568014706\t2.58037225\t2.846077948\t2.813664596\t2.715574549\t6.092814371\t6.200475059\t5.807426598\t3.532484076\t4.66301059\t5.412535411\t2.645316804\t2.927424983\t2.536949153\t3.757871537\t2.832353851\t2.62804711\t2.65040858\t2.8395622\t3.095433415\t2.662337662\t3.818849449\t2.770128922\t2.896877106\t3.118418178\t2.869510135\t3.200765632\t2.638825718\t1.346666667"
+    ]
+
+
+    var seriesData = [];
+    for (var i = 0; i < 9; i++) {
+        var tmpData = {};
+        tmpData.type = "line";
+        tmpData.data = stringArray[i].split("\t");
+        for (var j = 0; j < tmpData.data.length; j++) {
+            tmpData.data[j] = parseFloat(tmpData.data[j]).toFixed(2);
+        }
+        tmpData.name = nameArray[i];
+        seriesData[i] = tmpData;
+    }
+    seriesData[5].markPoint = {
+        symbol: "Rect",
+        symbolSize: [80, 30],
+        label: {
+            show: true, formatter: function (param) {
+                return "非正常值";
+            }
+        },
+        data: [
+            {
+                coord: [10, '14.2'], label: {show: true}
+            }
+        ]
+    };
+
+    // 指定图表的配置项和数据
+    var option = {
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data: nameArray
+        },
+        dataZoom: [
+            {
+                show: true,
+                start: 0,
+                end: 100
+            },
+            {
+                type: 'inside',
+                start: 0,
+                end: 100
+            }
+        ],
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: dataTime,
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: seriesData
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+
+
+</body>
+
+</html>
